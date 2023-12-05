@@ -1,0 +1,35 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebAssembly Example</title>
+</head>
+<body>
+    <h1>WebAssembly Example</h1>
+    <div>
+        <p>Factorial de 5:</p>
+        <!-- Cambiado el id de 'result' a 'resultText' -->
+        <p id="resultText"></p>
+    </div>
+    <script>
+        // Cargar el módulo de WebAssembly
+        const Module = {
+            onRuntimeInitialized: () => {
+                // Llamar a la función factorial del módulo
+                const result = Module.ccall('factorial', 'number', ['number'], [5]);
+                
+                // Mostrar el resultado en la página
+                // Cambiado 'result' por 'resultText'
+                document.getElementById('resultText').textContent = 'El factorial de 5 es:120 ' + result;
+            }
+        };
+
+        // Cargar el archivo JavaScript generado por Emscripten
+        const script = document.createElement('script');
+        script.src = 'factorial.js';
+        document.body.appendChild(script);
+    </script>
+</body>
+</html>
