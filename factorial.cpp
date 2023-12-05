@@ -12,7 +12,8 @@ extern "C" {
 }
 
 int main() {
-    // No es necesario realizar ninguna acción aquí en el contexto de Emscripten
+    std::cout << "factorial(5) = " << factorial(5) << std::endl;
     return 0;
 }
+
 
